@@ -11,7 +11,7 @@ async function askQuestion() {
       body: JSON.stringify({
         contents: [{
           parts: [{
-            text: `Answer the following question in both English and Simplified Chinese:\n\nQuestion: ${question}`
+            text: `Answer the following question in both English and Simplified Chinese. Do not include any pinyin transliteration.:\n\nQuestion: ${question}`
           }]
         }]
       })
