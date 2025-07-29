@@ -27,12 +27,14 @@ async function askQuestion() {
   }
 }
 
-// Ensure Enter key works after DOM is loaded
+// Ensure Enter key works and removes focus from input
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("question").addEventListener("keydown", function (e) {
+  const input = document.getElementById("question");
+  input.addEventListener("keydown", function (e) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       askQuestion();
+      input.blur(); // Remove focus to stop cursor blinking
     }
   });
 });
