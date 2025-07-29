@@ -5,15 +5,22 @@ async function askQuestion() {
   const apiKey = "AIzaSyCAYPvLPC518tX3krwwweG91lZ9oP7DSo8";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: question }] }]
-    })
-  });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: question }] }]
+      })
+    });
 
-  const data = await response.json();
-  const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "No answer found.";
-  responseElement.innerText = answer;
+    const data = await response.json();
+    console.log("API Response:", data); // 👈 Check this in browser console
+
+    const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "No answer found.";
+    responseElement.innerText = answer;
+  } catch (error) {
+    console.error("Error calling Gemini API:", error);
+    responseElement.innerText = "Error connecting to Gemini API.";
+  }
 }
