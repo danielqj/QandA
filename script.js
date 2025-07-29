@@ -1,4 +1,3 @@
-
 async function askQuestion() {
   const question = document.getElementById("question").value;
   const responseElement = document.getElementById("answer");
@@ -28,10 +27,12 @@ async function askQuestion() {
   }
 }
 
-// Enable Enter key to submit question
-document.getElementById("question").addEventListener("keydown", function (e) {
-  if (e.key === "Enter" && !e.shiftKey) {
-    e.preventDefault();
-    askQuestion();
-  }
+// Ensure Enter key works after DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("question").addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      askQuestion();
+    }
+  });
 });
