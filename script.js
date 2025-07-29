@@ -3,7 +3,8 @@ async function askQuestion() {
   const responseElement = document.getElementById("answer");
 
   const apiKey = "AIzaSyAyzQvFzWoEd8ZhzrqCwVcGsxNgpJgdCvQ";
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
 
   try {
     const response = await fetch(url, {
@@ -15,7 +16,9 @@ async function askQuestion() {
     });
 
     const data = await response.json();
-    console.log("API Response:", data); // 👈 Check this in browser console
+
+    // 👇 Add this line to inspect the full response
+    console.log("Full API response:", JSON.stringify(data, null, 2));
 
     const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "No answer found.";
     responseElement.innerText = answer;
