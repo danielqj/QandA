@@ -3,7 +3,7 @@ async function askQuestion() {
   const responseElement = document.getElementById("answer");
 
   const apiKey = "AIzaSyAyzQvFzWoEd8ZhzrqCwVcGsxNgpJgdCvQ";
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
 
 
   try {
@@ -27,3 +27,5 @@ async function askQuestion() {
     responseElement.innerText = "Error connecting to Gemini API.";
   }
 }
+
+ 
