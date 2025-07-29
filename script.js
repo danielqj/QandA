@@ -2,7 +2,7 @@ async function askQuestion() {
   const question = document.getElementById("question").value;
   const responseElement = document.getElementById("answer");
 
-  const apiKey = "AIzaSyCAYPvLPC518tX3krwwweG91lZ9oP7DSo8";
+  const apiKey = "AIzaSyAyzQvFzWoEd8ZhzrqCwVcGsxNgpJgdCvQ";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
 
   try {
